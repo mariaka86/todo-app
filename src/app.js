@@ -1,11 +1,23 @@
 import React from 'react';
+import { MantineProvider } from '@mantine/core';
+import Header from './components/Header/index';
+import Footer from './components/Footer/index'
+import Form from './hooks/form';
+import ToDo from './components/ToDo/index';
+import {useState,useEffect} from 'react';
 
-import ToDo from './Components/ToDo';
-
-export default class App extends React.Component {
-  render() {
+const App =()=>{
+  
     return (
-      <ToDo />
+      <React.Fragment>
+      <Header/>
+      <MantineProvider withGlobalStyles withNormalizeCSS>
+        <Form/>
+       <ToDo />
+      </MantineProvider>
+      <Footer/>
+      </React.Fragment>
+      
     );
   }
-}
+  export default App;

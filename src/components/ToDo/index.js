@@ -19,10 +19,10 @@ const ToDo = () => {
     setList([...list, item]);
   }
 
-  function deleteItem(id) {
-    const items = list.filter( item => item.id !== id );
-    setList(items);
-  }
+  // function deleteItem(id) {
+  //   const items = list.filter( item => item.id !== id );
+  //   setList(items);
+  // }
 
   function toggleComplete(id) {
 
