@@ -2,22 +2,24 @@ import React from 'react';
 import { MantineProvider } from '@mantine/core';
 import Header from './components/Header/index';
 import Footer from './components/Footer/index'
-import Form from './hooks/form';
 import ToDo from './components/ToDo/index';
+import AddForm from './components/AddForm'
+import List from './components/List';
 import {useState,useEffect} from 'react';
 
-const App =()=>{
+const App=()=> {
   
     return (
       <React.Fragment>
       <Header/>
       <MantineProvider withGlobalStyles withNormalizeCSS>
-        <Form/>
        <ToDo />
+       <AddForm/>
       </MantineProvider>
+      <List/>
       <Footer/>
       </React.Fragment>
       
-    );
-  }
+    )
+  };
   export default App;
