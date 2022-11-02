@@ -2,7 +2,7 @@ import React from 'react';
 import { Pagination,Card } from '@mantine/core';
 import {When} from 'react-if'
 import { useContext,useState} from 'react';
-import { SettingsContext } from '../../Context/Settings';
+import { SettingsContext } from '../../Context/Settings/settings';
 
 
 const List =({list, toggleComplete})=>{
