@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form.js';
 import Header from '../Header'
-
+import List from '../List'
 import { v4 as uuid } from 'uuid';
+import { Grid , Column} from '@mantine/core';
 
 const ToDo = () => {
 
@@ -20,10 +21,10 @@ const ToDo = () => {
     setList([...list, item]);
   }
 
-  // function deleteItem(id) {
-  //   const items = list.filter( item => item.id !== id );
-  //   setList(items);
-  // }
+  function deleteItem(id) {
+    const items = list.filter( item => item.id !== id );
+    setList(items);
+  }
 
   function toggleComplete(id) {
 
@@ -47,12 +48,15 @@ const ToDo = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps 
   }, [list]);  
 
+  <Grid>
+  <Grid.Col span {4}>1</Grid.Col>
+  <Grid.Col span {4}>2</Grid.Col>
+
   return (
     <>
     <Header incomplete = {incomplete}/>
-      <header data-testid="todo-header">
-        <h1 data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
-      </header>
+     <Grid.col xs={12} sm ={8}>
+      
 
       <form onSubmit={handleSubmit}>
 
@@ -77,9 +81,11 @@ const ToDo = () => {
           <button type="submit">Add Item</button>
         </label>
       </form>
-
-      <List {toggleComplete,list}/>
-
+      </Grid.Col>
+      <Grid.col xs={12} sm ={8}> 
+      <List {toggleComplete, list}/>
+      </Grid.col>
+      </Grid>
     </>
   );
 };
