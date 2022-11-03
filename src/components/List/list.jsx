@@ -1,11 +1,23 @@
 import React from 'react';
-import { Pagination,Card } from '@mantine/core';
+import {Badge, Pagination,Card,CloseButton ,Text,createStyles} from '@mantine/core';
 import {When} from 'react-if'
 import { useContext,useState} from 'react';
 import { SettingsContext } from '../../Context/Settings/settings';
 
 
-const List =({list, toggleComplete})=>{
+
+
+const useStyles = createStyles((theme) => ({
+  badge: {
+    textTransform: 'capitalize',
+    fontSize: theme.fontSizes.xs,
+    margin: '3px',
+  }
+}))
+
+
+const List =({list, toggleComplete,deleteItem})=>{
+const {classes} = useStyles()
 const{pageItems,showCompleted}= useContext(SettingsContext)
 const[page,setPage]= useState(1)
 // pagination
@@ -20,6 +32,16 @@ console.log('displayList',displayList)
     <>
       {displayList.map(item => (
         <Card key={item.id}>
+          <Card.Section withBorder>
+          {
+            item.complete
+            
+            ? <Badge color='green' onClick={() => toggleComplete(item.id)}className={classes.badge}>Complete</Badge>
+            : <Badge color='red' onClick={() => toggleComplete(item.id)}className={classes.badge}>Pending</Badge>
+          }
+            <Text>{item.assignee}</Text>
+            <CloseButton title ='Delete Task'onClick={()=>deleteItem(item.id)} />
+          </Card.Section>
           <p>{item.text}</p>
           <p><small>Assigned to: {item.assignee}</small></p>
           <p><small>Difficulty: {item.difficulty}</small></p>
