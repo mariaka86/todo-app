@@ -3,7 +3,7 @@ import useForm from '../../hooks/form.js';
 import Header from '../Header'
 import List from '../List/list'
 import { v4 as uuid } from 'uuid';
-import { Grid, Card } from '@mantine/core';
+import { Grid, Card,Text, TextInput} from '@mantine/core';
 
 const ToDo = () => {
 
@@ -54,7 +54,7 @@ const ToDo = () => {
       <Header incomplete={incomplete} />
       <Grid style={{ width: '80%', margin: 'auto' }}>
         <Grid.Col xs={12} sm={4}>
-          <Card withBorder p="xs">
+          <Card withBorder shadow ="sm" p="xs">
 
 
             <form onSubmit={handleSubmit}>
@@ -83,7 +83,7 @@ const ToDo = () => {
             </Card>
         </Grid.Col>
         <Grid.Col xs={12} sm={8}>
-          <List list={list} toggleComplete={toggleComplete} />
+          <List list={list} toggleComplete={toggleComplete} deleteItem={deleteItem}/>
         </Grid.Col>
       </Grid>
   
