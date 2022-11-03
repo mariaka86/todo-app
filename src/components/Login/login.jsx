@@ -1,7 +1,7 @@
 import React from 'react';
 import {When} from 'react-if';
 
-import { LoginContext } from './context.js';
+import { LoginContext } from '../Auth/context.js';
 
 class Login extends React.Component {
   static contextType = LoginContext;
