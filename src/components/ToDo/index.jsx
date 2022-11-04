@@ -3,9 +3,20 @@ import useForm from '../../hooks/form.js';
 import Header from '../Header'
 import List from '../List/list'
 import { v4 as uuid } from 'uuid';
-import { Grid, Card,Text, TextInput} from '@mantine/core';
+import { Grid, Card,Text, TextInput,createStyles} from '@mantine/core';
+
+const useStyles = createStyles((theme)=>({
+  formHeading:{
+    fontSize: theme.fontSizes.lg,
+    fontWeight:'bold',
+  }
+}))
+
+
+
 
 const ToDo = () => {
+  const {classes}= useStyles();
 
   const [defaultValues] = useState({
     difficulty: 4,
@@ -55,6 +66,7 @@ const ToDo = () => {
       <Grid style={{ width: '80%', margin: 'auto' }}>
         <Grid.Col xs={12} sm={4}>
           <Card withBorder shadow ="sm" p="xs">
+          <Text className={classes.formHeading}>Add To Do Item</Text>
 
 
             <form onSubmit={handleSubmit}>
