@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form.js';
 import Header from '../Header'
 import List from '../List/list'
+import Auth from '../Auth/auth'
 import { v4 as uuid } from 'uuid';
-import { Grid, Card,Text, TextInput,createStyles} from '@mantine/core';
+import { Grid, Card,Text,createStyles} from '@mantine/core';
 
 const useStyles = createStyles((theme)=>({
   formHeading:{
@@ -65,6 +66,7 @@ const ToDo = () => {
       <Header incomplete={incomplete} />
       <Grid style={{ width: '80%', margin: 'auto' }}>
         <Grid.Col xs={12} sm={4}>
+        <Auth capability="create">
           <Card withBorder shadow ="sm" p="xs">
           <Text className={classes.formHeading}>Add To Do Item</Text>
 
@@ -93,6 +95,8 @@ const ToDo = () => {
               </label>
             </form>
             </Card>
+            </Auth>
+
         </Grid.Col>
         <Grid.Col xs={12} sm={8}>
           <List list={list} toggleComplete={toggleComplete} deleteItem={deleteItem}/>
